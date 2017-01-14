@@ -1,0 +1,58 @@
+body {
+	padding: 0;
+	background-image: url("http://localhost:8080/Rush00/img/background.jpg");
+	color: white;
+}
+
+#menu {
+	border: solid;
+	border-radius: 10px;
+
+	height: 100;
+	width: auto;
+
+	background-color: gray;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+#content {
+	margin-top: 10px;
+	border: solid;
+	border-radius: 10px;
+
+	height: 800;
+	width: auto;
+
+	background-color: gray;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+#footer {
+	margin-top: 10px;
+
+	height: 100;
+	width: auto;
+
+	border: solid;
+	border-radius: 10px;
+
+	background-color: gray;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+#bloc_menu {
+	border: solid;
+
+	width: 160px;
+	height: 80px;
+
+	margin-left: 3px;
+	margin-top: 6px;
+
+	text-align: center;
+	align-items: center;
+
+	background-color: rgba(100, 122, 0, 0.5);
+
+	float:left;
+}
