@@ -1,11 +1,22 @@
 <?PHP
 include "private/config.php";
 
-$db = sql_connect();
-if (mysql_query($db, "CREATE DATABASE boutique") === TRUE)
+function sql_connect1()
+{
+	$db = mysqli_connect($db_url, $db_user, $db_pass);
+	if (!isset($db))
+	{
+		print("Error connecting to database\n");
+		return (FALSE);
+	}
+	return ($db);
+}
+
+$db = sql_connect1();
+if (mysqli_query($db, "CREATE DATABASE boutique") === TRUE)
 {
 	//executer fichier .sql
-	mysql_select_db("boutique", $db);
+		mysqli_select_db($db, "boutique");
     printf("Database créée avec succès.<br/>");
 }
 else

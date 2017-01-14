@@ -1,6 +1,6 @@
 body {
 	padding: 0;
-	background-image: url("http://localhost:8080/Rush00/img/background.jpg");
+	background-image: url("../img/background.jpg");
 	color: white;
 }
 
@@ -55,4 +55,9 @@ body {
 	background-color: rgba(100, 122, 0, 0.5);
 
 	float:left;
+}
+
+#install {
+	margin-top: 5em;
+	text-align: center;
 }
