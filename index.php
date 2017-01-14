@@ -21,12 +21,12 @@
 
 			// $result = $db->query("SELECT * FROM item");
 			$result = mysqli_query($db, "SELECT * FROM item");
-			$result = $result->fetch_all(MYSQLI_ASSOC);
+			mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 			foreach ($result as $key => $value) {
-				echo "$key --" .  $value['name'] . " Prix:" . $value['prix'] . " euros<br/>";
-				echo "<img src=". $value['image'] . " /><br/>";
-				echo "Achat: <a href=achat.php?" . $value['id'] . " >ici</a>";
+				echo "$key --" .  $value['name'] . " Prix:" . $value['prix'] . " euros<br />";
+				echo "<img src=". $value['image'] . " /><br />";
+				echo "Ajouter au panier : <a href=achat.php?id=" . $value['id'] . ">Ajouter </a>" . "<br /><br />";
 			}
 			?>
 		</div>

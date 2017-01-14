@@ -30,7 +30,7 @@
 						if ($value['pass'] === $pass_hash)
 						{
 							$is_pass = 2;
-							$_SESSION['logged_as'] = $pass_reg;
+							$_SESSION['logged_as'] = $email_reg;
 							$_SESSION['mess_error'] = "Conection Reussi";
 						}
 						else

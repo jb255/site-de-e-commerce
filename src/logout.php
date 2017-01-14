@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$_SESSION['logged_as'] = '';
+session_unset($_SESSION);
 header ('Location: ../index.php');
 
 ?>
