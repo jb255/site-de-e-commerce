@@ -14,7 +14,7 @@
 			<a href="http://localhost:8080/Rush00/src/boutique.php" style="color:white;"><div id=bloc_menu><h3 style="margin-top:25px;">BOUTIQUE</h3></div></a>
 		<?php include 'src/menu.php'; ?>
 		</div>
-		<div id="content">
+		<div id="content" style="padding-left: 2em;">
 			<?php
 			$db = sql_connect();
 
@@ -24,7 +24,7 @@
 
 			foreach ($result as $key => $value) {
 				echo "$key --" .  $value['name'] . " Prix:" . $value['prix'] . " euros<br />";
-				echo "<img src=". $value['image'] . " /><br />";
+				echo "<img src=" . "." . $value['image'] . " /><br />";
 				echo "Ajouter au panier : <a href=achat.php?id=" . $value['id'] . ">Ajouter</a>" . "<br /><br />";
 			}
 			?>
