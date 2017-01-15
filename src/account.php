@@ -3,7 +3,8 @@
 	session_start();
 	$db = sql_connect();
 
-	if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['connect_submit'] === "Attention cette action est irreversible") {
+	if ($_SERVER["REQUEST_METHOD"] == "POST" && $_POST['connect_submit'] === "Attention cette action est irreversible")
+	{
 		$is_pass = 0;
 		if (!empty($_POST['delete_password']))
 			$is_pass = 1;
@@ -28,7 +29,8 @@
 						{
 							$_SESSION['del_error'] = "Votre compte a bien été suprimé";
 							mysqli_query($db, "DELETE FROM users WHERE e_mail = '$log'");
-							$_SESSION['logged_as'] = '';
+							session_unset($_SESSION);
+							header ('Location: ../index.php');
 						}
 						else
 							$_SESSION['del_error'] = "Mauvais mot de passe";
@@ -42,6 +44,16 @@
 		else
 		{
 			$_SESSION['del_error'] =  "Not correct";
+		}
+	}
+	$titi = $_SESSION['logged_as'];
+	$toto = mysqli_query($db, "SELECT * FROM users WHERE e_mail = '$titi'");
+	mysqli_fetch_all($toto, MYSQLI_ASSOC);
+	foreach ($toto as $key => $value)
+	{
+		if ($value['admin'] === 1)
+		{
+			$_SESSION['admin'] = 1;
 		}
 	}
 ?>
@@ -65,7 +77,7 @@
 		<?php 
 		if ($_SESSION['del_error'] !== "")
 			echo $_SESSION['del_error'];
-		$_SESSION['del_error'] = "";
+		$_SESSION['del_error'] = "";	
 		?>
 			</center>
 		</div>

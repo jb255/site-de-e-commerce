@@ -2,25 +2,40 @@
 	include "../private/config.php";
 	session_start();
 	$db = sql_connect();
-	echo "FILE";
 
-	if ($_SERVER["REQUEST_METHOD"] == "GET" && !empty($_GET['id_delete'])) {
+
+	$titi = $_SESSION['logged_as'];
+	$toto = mysqli_query($db, "SELECT * FROM users WHERE e_mail = '$titi'");
+	mysqli_fetch_all($toto, MYSQLI_ASSOC);
+
+	foreach ($toto as $key => $value)
+	{
+		echo $value['admin'];
+	}
+		if ($value['admin'] !== 1)
+		{
+			header ('Location: ../index.php');
+			echo "tamere la pute";
+		}
+	if ($_SERVER["REQUEST_METHOD"] == "GET" && !empty($_GET['id_delete'] && $value['admin'] === 1))
+	{
 		$id_to_delete = $_GET['id_delete'];
 		mysqli_query($db, "DELETE FROM item WHERE id LIKE '$id_to_delete'");
 	}
-	
-	if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['name_item']) && !empty($_POST['prix_item']) && !empty($_POST['image_item']) && !empty($_POST['cat_item']) && !empty($_POST['desc_item'] && $_POST['desc_item'] === 'Valider'))
+		if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['name_item']) && !empty($_POST['prix_item']) && !empty($_POST['image_item']) && !empty($_POST['desc_item'] && $_POST['submit_item'] === 'Valider' && $value['admin'] === 1))
 	{
 		echo "AJOUT DE L'ITEM";
 		$name_item = $_POST['name_item'];
 		$image_item = $_POST['image_item'];
 		$prix_item = $_POST['prix_item'];
 		$desc_item = $_POST['desc_item'];
-		$cat_item = $_POST['cat_item'];
-		mysqli_query($db, "INSERT INTO item (id, name, description, cat, image, prix) VALUES (null, '$name_item', '$desc_item', '$cat_item', '$image_item', '$prix_item')");
+		$fruit_item = $_POST['fruit_item'];
+		$jaune_item = $_POST['jaune_item'];
+		$rouge_item = $_POST['rouge_item'];
+		mysqli_query($db, "INSERT INTO item (id, name, description, fruit, image, prix, jaune, rouge) VALUES (null, '$name_item', '$desc_item', '$fruit_item', '$image_item', '$prix_item', '$jaune_item', '$rouge_item')");
 	}
 
-	if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['delete_member']))
+	if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST['delete_member'] && $_POST['delete'] === 'Suprimer membre' && $value['admin'] === 1))
 	{	
 			if ($result = mysqli_query($db, "SELECT * FROM users"))
 			{
@@ -57,19 +72,21 @@
 			mysqli_fetch_all($result, MYSQLI_ASSOC);
 
 			foreach ($result as $key => $value) {
-				echo "$key --" .  $value['name'] . " Prix:" . $value['prix'] . " euros<br />";
+				echo $value['name'] . " Prix:" . $value['prix'] . " euros<br />";
 				echo "<img src=../". $value['image'] . " /><br />";
 				echo "Supprimer : <a href=admin.php?id_delete=" . $value['id'] . ">X </a>" . "<br /><br />";
 			}
 			?>
 		</div>
-		<div id="create_item" style="margin:8px;width:98%;height:200px;border:solid;">
+		<div id="create_item" style="margin:8px;width:98%;height:200px;border:solid;overflow-y: scroll;">
 			<form method="post" action=#>
 				Nom de l'item <input type="text" name="name_item"><br/>
 				Prix de l'item <input type="text" name="prix_item"><br/>
 				Image de l'item <input type="text" name="image_item"><br/>
-				Categorie de l'item <input type="text" name="cat_item"><br/>
 				Description de l'item <input type="text" name="desc_item"><br/>
+				L'item est un fruit<input type="text" name="fruit_item"><br/>
+				L'item est jaune<input type="text" name="jaune_item"><br/>
+				L'item est rouge<input type="text" name="rouge_item"><br/>
 				<input type=submit name="submit_item" value="Valider"><br /><br />
 				Suprimer un membre <input type="text" name="delete_member"><br/>
 				<input type=submit name="delete" value="Suprimer membre"><br />
