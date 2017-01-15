@@ -17,11 +17,11 @@ if (mysqli_query($db, "CREATE DATABASE boutique") === TRUE)
 {
 	//executer fichier .sql
 		mysqli_select_db($db, "boutique");
-    echo "Boutique créée avec succès !";
+    echo "Boutique créée avec succès ! <a href='index.php'>CLIQUEZ ICI POUR ACCEDER A LA BOUTIQUE</a>";
 }
 else
 {
-	echo "Boutique déjà créée !";
+	echo "Boutique déjà créée ! <a href='index.php'>CLIQUEZ ICI POUR ACCEDER A LA BOUTIQUE</a>";
 }
 
 ?>
