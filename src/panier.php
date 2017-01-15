@@ -46,9 +46,14 @@
 
 			if ($_SESSION['logged_as'])
 			{
-				?>
-				<input type="submit" name="ACHETER" value="ACHETER">
-				<?php
+				if ($total !== 0)
+				{
+					?>
+					<input type="submit" name="ACHETER" value="ACHETER">
+					<?php
+				}
+				else 
+					echo "<h3>Veuillez remplir votre panier.</h3>";
 			}
 			else
 				echo "<h3>Connectez-vous pour pouvoir passer commande</h3>";
