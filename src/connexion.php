@@ -1,4 +1,4 @@
-<?PHP
+<?php
 	include "../private/config.php";
 	session_start();
 	$db = sql_connect();
@@ -21,8 +21,8 @@
 				mysqli_fetch_all($result, MYSQLI_ASSOC);
 				foreach ($result as $key => $value)
 				{
-					echo $value['e_mail'] . "<br/>";
-					echo $value['pass'] . "<br/>";
+					echo $value['e_mail'] . "<br />";
+					echo $value['pass'] . "<br />";
 					if ($value['e_mail'] === $email_reg)
 					{
 						$is_email = 2;
@@ -31,10 +31,10 @@
 						{
 							$is_pass = 2;
 							$_SESSION['logged_as'] = $email_reg;
-							$_SESSION['mess_error'] = "Conection Reussi";
+							$_SESSION['mess_error'] = "Connexion Réussie";
 						}
 						else
-							$_SESSION['mess_error'] = "Mauvais mot de pass";
+							$_SESSION['mess_error'] = "Mauvais mot de passe";
 					}
 				}
 			}
@@ -55,21 +55,21 @@
 	</head>
 	<body>
 		<div id="menu">
-			<a href="../index.php" style="color:white;"><div id=bloc_menu><h3 style="margin-top:25px;">ACCUEIL</h3></div></a>
-			<a href="boutique.php" style="color:white;"><div id=bloc_menu><h3 style="margin-top:25px;">BOUTIQUE</h3></div></a>
+			<a href="../index.php" style="color:white;"><div id="bloc_menu"><h3 style="margin-top:25px;">ACCUEIL</h3></div></a>
+			<a href="boutique.php" style="color:white;"><div id="bloc_menu"><h3 style="margin-top:25px;">BOUTIQUE</h3></div></a>
 			<?PHP include 'menu.php'; ?>
 	<div id="content">
-		<center>Connection
+		<center><h2>Connexion</h2>
 		<form method="post" action="#">
-			Email:<br/><input type="email" name="connect_email"><p>
-			Mot de passe:<br/><input type="password" name="connect_password"><p>
+			Email :<br /><input type="email" name="connect_email"><p>
+			Mot de passe :<br /><input type="password" name="connect_password"><p>
 			<input type="submit" name="connect_submit" value="Valider">
 		</form>
-		<?PHP 
+		<?php 
 		if ($_SESSION['mess_error'] !== "")
 			echo $_SESSION['mess_error'];
 		$_SESSION['mess_error'] = "";
 		?>
 		</center>
 	</div>
-	<?PHP include '../footer.php';?>
+	<?php include '../footer.php'; ?>

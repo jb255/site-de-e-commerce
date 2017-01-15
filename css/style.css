@@ -1,6 +1,7 @@
 body {
 	padding: 0;
-	background-image: url("../img/background.jpg");
+    background: url(../img/background.jpg) no-repeat center fixed; 
+    background-size: cover;
 	color: white;
 }
 

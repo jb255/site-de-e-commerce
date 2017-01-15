@@ -10,7 +10,7 @@
 	else {
 		echo "<a href=\"http://localhost:8080/Rush00/src/panier.php\" style=\"color:white;\"><div id=bloc_menu><h3 style=\"margin-top:25px;\">MON PANIER</h3></div></a>
 		<a href=\"http://localhost:8080/Rush00/src/account.php\" style=\"color:white;\"><div id=bloc_menu><h3 style=\"margin-top:25px;\">MON COMPTE</h3></div></a>
-		<a href=\"http://localhost:8080/Rush00/src/logout.php\" style=\"color:white;\"><div id=bloc_menu><h3 style=\"margin-top:25px;\">DECONNECTION</h3></div></a>";
+		<a href=\"http://localhost:8080/Rush00/src/logout.php\" style=\"color:white;\"><div id=bloc_menu><h3 style=\"margin-top:25px;\">DECONNEXION</h3></div></a>";
 	}
 	?>
 </div>

@@ -1,4 +1,4 @@
-<?PHP
+<?php
 	session_start();
 	include "private/config.php";
 
@@ -12,11 +12,10 @@
 		<div id="menu">
 			<a href="index.php" style="color:white;"><div id=bloc_menu><h3 style="margin-top:25px;">ACCUEIL</h3></div></a>
 			<a href="http://localhost:8080/Rush00/src/boutique.php" style="color:white;"><div id=bloc_menu><h3 style="margin-top:25px;">BOUTIQUE</h3></div></a>
-		<?PHP
-			include 'src/menu.php';
-		?>
+		<?php include 'src/menu.php'; ?>
+		</div>
 		<div id="content">
-			<?PHP
+			<?php
 			$db = sql_connect();
 
 			// $result = $db->query("SELECT * FROM item");
@@ -26,10 +25,10 @@
 			foreach ($result as $key => $value) {
 				echo "$key --" .  $value['name'] . " Prix:" . $value['prix'] . " euros<br />";
 				echo "<img src=". $value['image'] . " /><br />";
-				echo "Ajouter au panier : <a href=achat.php?id=" . $value['id'] . ">Ajouter </a>" . "<br /><br />";
+				echo "Ajouter au panier : <a href=achat.php?id=" . $value['id'] . ">Ajouter</a>" . "<br /><br />";
 			}
 			?>
 		</div>
-		<?PHP
+		<?php
 			include 'footer.php';
 		?>

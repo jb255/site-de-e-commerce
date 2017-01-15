@@ -1,4 +1,4 @@
-<?PHP
+<?php
 	include "../private/config.php";
 	session_start();
 	$db = sql_connect();
@@ -26,12 +26,12 @@
 						$log = $_SESSION['logged_as'];
 						if ($value['pass'] === $pass_hash)
 						{
-							$_SESSION['del_error'] = "Votre compte a bien ete suprime";
+							$_SESSION['del_error'] = "Votre compte a bien été suprimé";
 							mysqli_query($db, "DELETE FROM users WHERE e_mail = '$log'");
 							$_SESSION['logged_as'] = '';
 						}
 						else
-							$_SESSION['del_error'] = "Mauvais mot de pass";
+							$_SESSION['del_error'] = "Mauvais mot de passe";
 					}
 				}
 			}
@@ -54,20 +54,20 @@
 		<div id="menu">
 			<a href="../index.php" style="color:white;"><div id=bloc_menu><h3 style="margin-top:25px;">ACCUEIL</h3></div></a>
 			<a href="boutique.php" style="color:white;"><div id=bloc_menu><h3 style="margin-top:25px;">BOUTIQUE</h3></div></a>
-			<?PHP include 'menu.php'; ?>
-
-	<div id="content">
-		<center>Desinscription
-		<form method="post" action="#">
-			Mot de passe:<br/><input type="password" name="delete_password"><p>
-			<input type="submit" name="connect_submit" value="Attention cette action est irreversible">
-		</form>
-		<?PHP 
+			<?php include 'menu.php'; ?>
+		</div>
+		<div id="content">
+			<center><h2>Désinscription</h2>
+			<form method="post" action="#">
+				<p>Mot de passe :<br /><input type="password" name="delete_password"></p>
+				<input type="submit" name="connect_submit" value="Attention cette action est irreversible">
+			</form>
+		<?php 
 		if ($_SESSION['del_error'] !== "")
 			echo $_SESSION['del_error'];
 		$_SESSION['del_error'] = "";
 		?>
-		</center>
-	</div>
-	<?PHP include '../footer.php';?>
+			</center>
+		</div>
+	<?php include '../footer.php'; ?>
 

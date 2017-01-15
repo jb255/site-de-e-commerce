@@ -1,4 +1,4 @@
-<?PHP
+<?php
 	include "../private/config.php";
 	session_start();
 	$db = sql_connect();
@@ -21,11 +21,11 @@
 				mysqli_fetch_all($result, MYSQLI_ASSOC);
 				foreach ($result as $key => $value)
 				{
-					echo $value['e_mail'] . "<br/>";
-					echo $value['pass'] . "<br/>";
+					echo $value['e_mail'] . "<br />";
+					echo $value['pass'] . "<br />";
 					if ($value['e_mail'] === $_POST['register_email'])
 					{
-						$_SESSION['ins_error'] = "e_mail deja utilise";
+						$_SESSION['ins_error'] = "e_mail déjà utilisé";
 					}
 				}
 			}
@@ -55,24 +55,23 @@
 	</head>
 	<body>
 		<div id="menu">
-			<a href="../index.php" style="color:white;"><div id=bloc_menu><h3 style="margin-top:25px;">ACCUEIL</h3></div></a>
-			<a href="boutique.php" style="color:white;"><div id=bloc_menu><h3 style="margin-top:25px;">BOUTIQUE</h3></div></a>
-			<?PHP include 'menu.php'; ?>
-	<div id="content">
-		<center>Inscription
-		<form method="post" action="#">
-			Email:<br/><input type="email" name="register_email"><p>
-			Mot de passe:<br/><input type="password" name="register_password"><p>
-			Confirmation mot de passe:<br/><input type="password" name="register_password2"><p>
-			<input type="submit" name="register_submit" value="Valider">
-		</form>
-		<?PHP 
+			<a href="../index.php" style="color:white;"><div id="bloc_menu"><h3 style="margin-top:25px;">ACCUEIL</h3></div></a>
+			<a href="boutique.php" style="color:white;"><div id="bloc_menu"><h3 style="margin-top:25px;">BOUTIQUE</h3></div></a>
+			<?php include 'menu.php'; ?>
+		</div>
+		<div id="content">
+			<center><h2>Inscription</h2>
+			<form method="post" action="#">
+				<p>Email :<br /><input type="email" name="register_email"></p>
+				<p>Mot de passe :<br /><input type="password" name="register_password"></p>
+				<p>Confirmation<br />du mot de passe :<br /><input type="password" name="register_password2"></p>
+				<input type="submit" name="register_submit" value="Valider">
+			</form>
+		<?php 
 		if ($_SESSION['ins_error'] !== "")
 			echo $_SESSION['ins_error'];
 		$_SESSION['ins_error'] = "";
 		?>
-		</center>
-	</div>
-	<?PHP
-	include '../footer.php';
-	?>
+			</center>
+		</div>
+	<?php include '../footer.php'; ?>
