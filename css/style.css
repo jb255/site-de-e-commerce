@@ -44,11 +44,11 @@ body {
 #bloc_menu {
 	border: solid;
 
-	width: 160px;
-	height: 80px;
+	width: 180px;
+	height: 70px;
 
-	margin-left: 3px;
-	margin-top: 6px;
+	margin-left: 5px;
+	margin-top: 11px;
 
 	text-align: center;
 	align-items: center;
@@ -61,4 +61,9 @@ body {
 #install {
 	margin-top: 5em;
 	text-align: center;
+}
+.items_list {
+	display: block;
+	float: left;
+	margin-right: 2em;
 }
