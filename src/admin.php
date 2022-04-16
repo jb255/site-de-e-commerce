@@ -15,7 +15,7 @@
 		if ($value['admin'] !== 1)
 		{
 			header ('Location: ../index.php');
-			echo "tamere la pute";
+			echo "admin !== 1";
 		}
 	if ($_SERVER["REQUEST_METHOD"] == "GET" && !empty($_GET['id_delete'] && $value['admin'] === 1))
 	{
